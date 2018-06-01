@@ -1,5 +1,8 @@
 # monolog-pusher
 
+[![Build Status](https://travis-ci.com/shalvah/monolog-pusher.svg?branch=master)](https://travis-ci.com/shalvah/monolog-pusher)
+[![Latest Stable Version](https://poser.pugx.org/shalvah/monolog-pusher/v/stable)](https://packagist.org/packages/shalvah/monolog-pusher)
+
 Monolog handler that sends logs to [Pusher Channels](https://pusher.com/channels).
 
 ## Usage
