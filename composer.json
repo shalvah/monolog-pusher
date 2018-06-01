@@ -5,7 +5,8 @@
     "pusher",
     "monolog",
     "logging",
-    "error"
+    "error",
+    "logs"
   ],
   "minimum-stability": "stable",
   "license": "MIT",
