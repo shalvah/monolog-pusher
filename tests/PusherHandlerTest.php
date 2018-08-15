@@ -9,6 +9,7 @@ class PusherHandlerTest extends \Mockery\Adapter\Phpunit\MockeryTestCase
 {
     /**
      * The Pusher client test double
+     *
      * @var \Mockery\Mock
      */
     private $pusher;
@@ -24,11 +25,11 @@ class PusherHandlerTest extends \Mockery\Adapter\Phpunit\MockeryTestCase
         $message = 'something went wrong';
         $loggerName = 'testLogger';
         $this->pusher->shouldReceive('trigger')
-        ->withArgs([
-            $loggerName,
-            'log',
-            \Mockery::subset(['message' => $message])
-        ]);
+            ->withArgs([
+                $loggerName,
+                'log',
+                \Mockery::subset(['message' => $message])
+            ]);
         $handler = new PusherHandler($this->pusher);
         $logger = new Logger($loggerName, [$handler]);
         $logger->error($message);
