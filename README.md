@@ -6,24 +6,31 @@
 Monolog handler that sends logs to [Pusher Channels](https://pusher.com/channels).
 
 ## Usage
-Create a `Pusher` client:
+- Create a `Pusher` client:
 
 ```php
 $pusher = new \Pusher\Pusher('YOUR_APP_KEY', 'YOUR_APP_SECRET', 'YOUR_APP_ID');
 ```
 
-Initialise the `PusherHandler` with your Pusher client, and attach this handler to your Monolog logger:
+- Create a new `PusherHandler` with your Pusher client:
 
 ```php
 $handler = new \Shalvah\MonologPusher\PusherHandler($pusher);
+```
+
+- Attach this handler to your Monolog logger:
+
+```php
 $logger = new Logger('pusherLogs');
 $logger->pushHandler($handler);
 ```
-Call the various log methods (`info`, `error`, `debug`, `critical`and so forth). Log messages will be sent to Pusher. The name of the Pusher channel used will be the name you set when creating your `Logger` (in the above example, "pusherLogs"):
+
+- Call the various log methods (`info`, `error`, `debug`and so forth) to send a log message to Pusher. The name of the Pusher channel used will be the name you set when creating your `Logger` (in the above example, "pusherLogs"). The event name used is *`log`*:
 
 ```php
 $logger->error('oops!');
 ```
+
 By default, the `PusherHandler` will only log messages of level **error** and above. You can change this by passing a minimum level as a second parameter to the constructor:
 
 ```php
