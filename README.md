@@ -9,13 +9,34 @@ Monolog handler that sends logs to [Pusher Channels](https://pusher.com/channels
 - Create a `Pusher` client:
 
 ```php
-$pusher = new \Pusher\Pusher('YOUR_APP_KEY', 'YOUR_APP_SECRET', 'YOUR_APP_ID');
+$pusher = new \Pusher\Pusher(
+  'YOUR_APP_KEY', 
+  'YOUR_APP_SECRET', 
+  'YOUR_APP_ID', 
+  [
+    'cluster => 'YOUR_APP_CLUSTER'
+  ]
+);
 ```
 
 - Create a new `PusherHandler` with your Pusher client:
 
 ```php
 $handler = new \Shalvah\MonologPusher\PusherHandler($pusher);
+```
+
+- Alternatively, you can pass the Pusher config options directly to the Handler (as an array), so it can handle creation of the Pusher instance itself:
+
+```php
+$config = [
+  'YOUR_APP_KEY', 
+  'YOUR_APP_SECRET', 
+  'YOUR_APP_ID',
+  [
+    'cluster => 'YOUR_APP_CLUSTER'
+  ]
+];
+$handler = new \Shalvah\MonologPusher\PusherHandler($config);
 ```
 
 - Attach this handler to your Monolog logger:
