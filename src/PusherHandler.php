@@ -29,7 +29,7 @@ class PusherHandler extends AbstractProcessingHandler
         $this->pusher = $pusher;
     }
 
-    protected function write(array $record)
+    protected function write(array $record): void
     {
         $this->pusher->trigger($record['channel'], 'log', $record);
     }
